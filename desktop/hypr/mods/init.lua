@@ -2,8 +2,6 @@
 ---- AUTOSTART ----
 -------------------
 
--- See https://wiki.hypr.land/Configuring/Basics/Autostart/
-
 hl.on("hyprland.start", function()
 	-- Status bar, tray, notifications, cloud, wallpaper, idle
 	hl.exec_cmd("waybar & nm-applet & dunst & nextcloud & hyprpaper & hypridle")

@@ -2,7 +2,7 @@
 
 -- Helper to easily set autocmds in Lua
 local function buf_map(mode, lhs, rhs, opts)
-	opts = vim.tbl_extend("force", { noremap = true, silent = true, buffer = true }, opts or {})
+	opts = vim.tbl_extend("force", { noremap = true, silent = true, buf = 0 }, opts or {})
 	vim.keymap.set(mode, lhs, rhs, opts)
 end
 

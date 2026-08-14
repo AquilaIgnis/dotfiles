@@ -1,10 +1,18 @@
 local M = {}
 
+-- Returns the window id of a visible floaterm in the current tabpage, or nil
+local function find_floaterm_win()
+  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    if vim.bo[vim.api.nvim_win_get_buf(win)].filetype == 'floaterm' then
+      return win
+    end
+  end
+end
+
 function M.toggle_floaterm()
-  local bufnr = vim.fn
-  if bufnr ~= -1 then
+  if find_floaterm_win() then
     vim.cmd('FloatermHide')
-else
+  else
     vim.notify("No Floaterm open.", vim.log.levels.INFO)
   end
 end

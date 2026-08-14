@@ -26,7 +26,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 local lsp_attach = function(client, bufnr)
 	-- Helper function to set buffer-local keymaps
 	local bufmap = function(mode, lhs, rhs, desc)
-		vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
+		vim.keymap.set(mode, lhs, rhs, { buf = bufnr, desc = desc })
 	end
 
 	-- Keymaps for LSP actions
@@ -56,7 +56,6 @@ end
 
 -- Mason-LSPconfig setup
 local servers = {
-	"lua_ls",
 	"clangd",
 	"vtsls",
 	"pyright",
@@ -65,6 +64,7 @@ local servers = {
 	"stimulus_ls",
 	"cssls",
 	"yamlls",
+	"sqlls",
 }
 
 require("mason-lspconfig").setup({

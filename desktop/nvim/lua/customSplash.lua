@@ -8,16 +8,16 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end
 
     local splash_win = vim.api.nvim_get_current_win()
-    local orig_number         = vim.api.nvim_win_get_option(splash_win, "number")
-    local orig_relativenumber = vim.api.nvim_win_get_option(splash_win, "relativenumber")
+    local orig_number         = vim.wo[splash_win].number
+    local orig_relativenumber = vim.wo[splash_win].relativenumber
 
     local bufnr = vim.api.nvim_get_current_buf()
     vim.b[bufnr].splash_winid            = splash_win
     vim.b[bufnr].splash_orig_number      = orig_number
     vim.b[bufnr].splash_orig_relativenumber = orig_relativenumber
 
-    vim.api.nvim_win_set_option(splash_win, "number", false)
-    vim.api.nvim_win_set_option(splash_win, "relativenumber", false)
+    vim.wo[splash_win].number = false
+    vim.wo[splash_win].relativenumber = false
 
     vim.opt_local.buftype   = "nofile"
     vim.opt_local.bufhidden = "hide"
@@ -56,23 +56,23 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
     vim.api.nvim_create_autocmd("InsertEnter", {
       group = clear_grp,
-      buffer = bufnr,
+      buf = bufnr,
       once = true,
       callback = function()
         vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "" })
         vim.api.nvim_win_set_cursor(splash_win, {1, 0})
-        vim.api.nvim_win_set_option(splash_win, "number", vim.b[bufnr].splash_orig_number)
-        vim.api.nvim_win_set_option(splash_win, "relativenumber", vim.b[bufnr].splash_orig_relativenumber)
+        vim.wo[splash_win].number = vim.b[bufnr].splash_orig_number
+        vim.wo[splash_win].relativenumber = vim.b[bufnr].splash_orig_relativenumber
       end,
     })
 
     vim.api.nvim_create_autocmd("BufLeave", {
       group = clear_grp,
-      buffer = bufnr,
+      buf = bufnr,
       once = true,
       callback = function()
-        vim.api.nvim_win_set_option(splash_win, "number", vim.b[bufnr].splash_orig_number)
-        vim.api.nvim_win_set_option(splash_win, "relativenumber", vim.b[bufnr].splash_orig_relativenumber)
+        vim.wo[splash_win].number = vim.b[bufnr].splash_orig_number
+        vim.wo[splash_win].relativenumber = vim.b[bufnr].splash_orig_relativenumber
       end,
     })
 

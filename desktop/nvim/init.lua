@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
-		vim.highlight.on_yank()
+		vim.hl.on_yank()
 	end,
 })
 
@@ -81,15 +81,11 @@ require("lsnip")
 --"''''''''''''''''''nvim-colorizer'''''''''''''''''''''''''''''''''''''
 require("colorizer").setup()
 -- this is an autocomand to force colorizer to attach to some files
-vim.api.nvim_exec(
-	[[
-augroup ColorizerAttach
-autocmd!
-autocmd BufRead,BufNewFile *.config,*.rasi,*.conf,*.qss,*.css :ColorizerAttachToBuffer
-augroup END
-]],
-	false
-)
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	group = vim.api.nvim_create_augroup("ColorizerAttach", { clear = true }),
+	pattern = { "*.config", "*.rasi", "*.conf", "*.qss", "*.css" },
+	command = "ColorizerAttachToBuffer",
+})
 
 --'''''''''''''' Theme ''''''''''''''''''''''''''''''''''''''''''''''''
 require("catppuccin").setup({
