@@ -1,4 +1,17 @@
-require("nvim-treesitter").install({ "lua", "yaml", "bash", "python", "typescript", "javascript", "go", "rust" })
+local ensure_installed = {
+	"lua",
+	"yaml",
+	"bash",
+	"python",
+	"typescript",
+	"go",
+	"rust",
+	"markdown",
+	"markdown_inline",
+	"html",
+}
+
+require("nvim-treesitter").install(ensure_installed)
 
 local ts_indent_langs = { "html", "javascript", "tsx", "go", "lua" }
 vim.api.nvim_create_autocmd("FileType", {

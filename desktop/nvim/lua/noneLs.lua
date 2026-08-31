@@ -7,7 +7,7 @@ local rustfmt_format = require("none-ls.formatting.rustfmt")
 
 null_ls.setup({
 	sources = {
-		null_ls.builtins.diagnostics.djlint,
+		null_ls.builtins.formatting.clang_format,
 		null_ls.builtins.diagnostics.cppcheck,
 		null_ls.builtins.diagnostics.codespell,
 		null_ls.builtins.diagnostics.hadolint,

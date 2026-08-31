@@ -48,7 +48,7 @@ local lsp_attach = function(client, bufnr)
 	end, "Toggle inlay hints")
 
 	-- Turn inlay hints on automatically, but only for these filetypes
-	local inlay_hint_filetypes = { go = true, cpp = true, rust = true }
+	local inlay_hint_filetypes = { go = true, c = true, cpp = true, rust = true }
 	if client:supports_method("textDocument/inlayHint") and inlay_hint_filetypes[vim.bo[bufnr].filetype] then
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
@@ -191,9 +191,7 @@ vim.lsp.config("lua_ls", {
 			workspace = {
 				library = {
 					"/usr/share/hypr/stubs",
-					-- Neovim Lua runtime completion
 					vim.env.VIMRUNTIME,
-					-- Your nvim config Lua files
 					vim.fn.stdpath("config") .. "/lua",
 				},
 				checkThirdParty = false,
@@ -207,3 +205,12 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.enable("lua_ls")
+
+-- Kotling
+
+vim.lsp.config("kotlin-lsp", {
+	capabilities = capabilities,
+	on_attach = lsp_attach,
+})
+
+vim.lsp.enable("kotlin-lsp")

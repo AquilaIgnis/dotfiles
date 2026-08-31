@@ -19,7 +19,6 @@ export PYTHONUNBUFFERED=1
 export QT_QPA_PLATFORMTHEME=qt5ct
 export MANPAGER="sh -c 'awk '\''{ gsub(/\x1B\[[0-9;]*m/, \"\", \$0); gsub(/.\x08/, \"\", \$0); print }'\'' | bat -p -lman'"
 export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket
-# export DOCKER_HOST=unix:///var/run/docker.sock
 export NO_AT_BRIDGE=1 #disable accessibility
 export GTK_A11Y=none
 
@@ -34,13 +33,14 @@ alias xc='wl-copy'
 alias goadum='ssh -x mal0@192.168.1.209'
 alias zz='python $HOME/scripts/devmode.py'
 alias docker-compose='docker compose'
-alias ranger='source ranger'
+alias ddown='docker compose down'
 alias dps='docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a'
+alias yzz='yazi'
 alias sr='source .venv/bin/activate'
 alias ncdu='ncdu --color dark'
 alias git-push='git remote | xargs -n1 git push'
 alias gc='git clone --depth=1'
-alias ls='ls --color=auto -hlF'
+alias apksigner='$HOME/Android/Sdk/build-tools/37.0.0/apksigner'
 
 ### Plugins ###
 plugins=(zsh-autosuggestions python virtualenv fzf)

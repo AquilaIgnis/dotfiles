@@ -25,11 +25,14 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "cpp",
+	pattern = { "cpp", "c" },
 	callback = function()
-		buf_map("n", "<F10>", ":!g++ -o %:p:r %<CR>:!%:p:r<CR>")
-		buf_map("n", "<F9>", ":w<bar>:FloatermNew --autoclose=0 g++ -g -Wall % && ./a.out<CR>")
-		buf_map("n", "<F11>", ":w<bar>:FloatermNew --disposable --autoclose=0 g++ -o %:p:r %<bar>/%:p:r<CR>")
+		buf_map("n", "<F10>", ":!g++ -std=c17 -Wall -Wextra -g -o %:p:r %<CR>:!%:p:r<CR>")
+		buf_map(
+			"n",
+			"<F11>",
+			":w<bar>:FloatermNew --disposable --autoclose=0 g++ -std=c17 -Wall -Wextra -g -o %:p:r %<bar>/%:p:r<CR>"
+		)
 	end,
 })
 
