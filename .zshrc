@@ -59,4 +59,31 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+if [[ -t 0 ]]; then
+  stty -ixon
+fi
+
+fzf-nvim-widget() {
+  local file
+
+  file=$(
+    (
+      unset FZF_DEFAULT_COMMAND
+      fzf --walker=file,follow < /dev/tty
+    )
+  ) || {
+    zle reset-prompt
+    return
+  }
+
+  [[ -z "$file" ]] && return
+
+  zle -I
+  nvim -- "$file"
+  zle reset-prompt
+}
+
+zle -N fzf-nvim-widget
+bindkey '^S' fzf-nvim-widget
+
 eval "$(uv generate-shell-completion zsh)"

@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		buf_map("n", "<F10>", ":w<CR>:!python3 %<CR>")
 		buf_map("i", "<F10>", "<Esc>:w<CR>:!python3 %<CR>")
-		buf_map("n", "<F11>", ":w<CR>:FloatermNew --disposable --autoclose=0 python3 %<CR>")
+		buf_map("n", "<F11>", ":w<CR>:FloatermNew --disposable --autoclose=never python3 %<CR>")
 	end,
 })
 
@@ -25,13 +25,13 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "cpp", "c" },
+	pattern = { "cpp" },
 	callback = function()
-		buf_map("n", "<F10>", ":!g++ -std=c17 -Wall -Wextra -g -o %:p:r %<CR>:!%:p:r<CR>")
+		buf_map("n", "<F10>", ":w<CR>:!g++ -Wall -Wextra -g -o %:p:r % && %:p:r<CR>")
 		buf_map(
 			"n",
 			"<F11>",
-			":w<bar>:FloatermNew --disposable --autoclose=0 g++ -std=c17 -Wall -Wextra -g -o %:p:r %<bar>/%:p:r<CR>"
+			":w<CR>:FloatermNew --disposable --autoclose=never g++ -Wall -Wextra -g -o %:p:r % && %:p:r<CR>"
 		)
 	end,
 })
@@ -40,15 +40,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "lua",
 	callback = function()
 		buf_map("n", "<F10>", ":w<CR>:!lua %<CR>")
-		buf_map("n", "<F11>", ":w<bar>:FloatermNew --disposable --autoclose=0 lua %<CR>")
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "typescript",
-	callback = function()
-		buf_map("n", "<F10>", ":w<CR>:!npx tsx %<CR>")
-		buf_map("n", "<F11>", ":w<CR>:FloatermNew --disposable --autoclose=0 npx tsx %<CR>")
+		buf_map("n", "<F11>", ":w<CR>:FloatermNew --disposable --autoclose=never lua %<CR>")
 	end,
 })
 
@@ -57,16 +49,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		buf_map("n", "<F10>", ":w<CR>:!go run %<CR>")
 		buf_map("i", "<F10>", "<Esc>:w<CR>:!go run %<CR>")
-		buf_map("n", "<F11>", ":w<CR>:FloatermNew --disposable --autoclose=0 go run %<CR>")
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "zig",
-	callback = function()
-		buf_map("n", "<F10>", ":w<CR>:!zig run %<CR>")
-		buf_map("i", "<F10>", "<Esc>:w<CR>:!zig run %<CR>")
-		buf_map("n", "<F11>", ":w<CR>:FloatermNew --disposable --autoclose=0 zig run %<CR>")
+		buf_map("n", "<F11>", ":w<CR>:FloatermNew --disposable --autoclose=never go run %<CR>")
 	end,
 })
 
@@ -75,6 +58,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		buf_map("n", "<F10>", ":w<CR>:!cargo run %<CR>")
 		buf_map("i", "<F10>", "<Esc>:w<CR>:!cargo run %<CR>")
-		buf_map("n", "<F11>", ":w<CR>:FloatermNew --disposable --autoclose=0 cargo run %<CR>")
+		buf_map("n", "<F11>", ":w<CR>:FloatermNew --disposable --autoclose=never cargo run %<CR>")
 	end,
 })

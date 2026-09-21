@@ -8,14 +8,14 @@ require("mods.windows")
 ------------------
 
 hl.monitor({
-	output = "DP-1",
+	output = "DP-4",
 	mode = "3840x2160@144",
 	position = "0x0",
 	scale = 2,
 })
 
 hl.monitor({
-	output = "DP-2",
+	output = "DP-5",
 	mode = "3840x2160@60",
 	position = "-1920x-950",
 	scale = 2,

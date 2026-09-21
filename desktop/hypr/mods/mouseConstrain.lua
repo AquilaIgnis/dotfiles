@@ -1,7 +1,7 @@
 local function toggle_monitor_lock()
 	local function set_monitor(pos)
 		local cmd = string.format(
-			'hyprctl eval \'hl.monitor({ output = "DP-2", mode = "3840x2160@60", position = "%s", scale = 2 })\'',
+			'hyprctl eval \'hl.monitor({ output = "DP-5", mode = "3840x2160@60", position = "%s", scale = 2 })\'',
 			pos
 		)
 		os.execute(cmd)

@@ -67,3 +67,4 @@ application/x-bat=org.gnome.TextEditor.desktop;
 text/javascript=org.gnome.TextEditor.desktop;
 text/css=org.gnome.TextEditor.desktop;
 audio/x-mod=org.gnome.TextEditor.desktop;
+text/x-csrc=org.gnome.TextEditor.desktop;
