@@ -36,6 +36,10 @@ text/javascript=org.gnome.TextEditor.desktop
 text/css=org.gnome.TextEditor.desktop
 x-scheme-handler/jetbrains=jetbrainsd.desktop
 audio/x-mod=org.gnome.TextEditor.desktop
+application/xml=org.gnome.TextEditor.desktop
+x-scheme-handler/http=net.waterfox.waterfox.desktop
+x-scheme-handler/https=net.waterfox.waterfox.desktop
+text/html=net.waterfox.waterfox.desktop
 
 [Added Associations]
 x-scheme-handler/terminal=org.wezfurlong.wezterm.desktop;
@@ -68,3 +72,4 @@ text/javascript=org.gnome.TextEditor.desktop;
 text/css=org.gnome.TextEditor.desktop;
 audio/x-mod=org.gnome.TextEditor.desktop;
 text/x-csrc=org.gnome.TextEditor.desktop;
+application/xml=org.gnome.TextEditor.desktop;

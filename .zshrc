@@ -14,6 +14,8 @@ export PATH="$HOME/scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
+export PATH="$HOME/google-cloud-sdk/bin/:$PATH"
+
 
 export PYTHONUNBUFFERED=1
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -41,6 +43,7 @@ alias ncdu='ncdu --color dark'
 alias git-push='git remote | xargs -n1 git push'
 alias gc='git clone --depth=1'
 alias apksigner='$HOME/Android/Sdk/build-tools/37.0.0/apksigner'
+alias fd='fd --no-ignore'
 
 ### Plugins ###
 plugins=(zsh-autosuggestions python virtualenv fzf)
@@ -87,3 +90,5 @@ zle -N fzf-nvim-widget
 bindkey '^S' fzf-nvim-widget
 
 eval "$(uv generate-shell-completion zsh)"
+
+export PATH="/home/mahalo/.stripe/bin:$PATH"

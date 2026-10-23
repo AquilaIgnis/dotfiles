@@ -37,6 +37,18 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "c" },
+	callback = function()
+		buf_map("n", "<F10>", ":w<CR>:!gcc -std=c11 -Wall -Wextra -g -o %:p:r % && %:p:r<CR>")
+		buf_map(
+			"n",
+			"<F11>",
+			":w<CR>:FloatermNew --disposable --autoclose=never gcc -std=c11 -Wall -Wextra -g -o %:p:r % && %:p:r<CR>"
+		)
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
 	pattern = "lua",
 	callback = function()
 		buf_map("n", "<F10>", ":w<CR>:!lua %<CR>")
