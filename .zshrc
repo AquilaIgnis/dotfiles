@@ -9,6 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 export EDITOR='nvim'
 export VISUAL='nvim'
+export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket
 
 export PATH="$HOME/scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
@@ -20,7 +21,6 @@ export PATH="$HOME/google-cloud-sdk/bin/:$PATH"
 export PYTHONUNBUFFERED=1
 export QT_QPA_PLATFORMTHEME=qt5ct
 export MANPAGER="sh -c 'awk '\''{ gsub(/\x1B\[[0-9;]*m/, \"\", \$0); gsub(/.\x08/, \"\", \$0); print }'\'' | bat -p -lman'"
-export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket
 export NO_AT_BRIDGE=1 #disable accessibility
 export GTK_A11Y=none
 
@@ -92,3 +92,7 @@ bindkey '^S' fzf-nvim-widget
 eval "$(uv generate-shell-completion zsh)"
 
 export PATH="/home/mahalo/.stripe/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/mahalo/.local/bin:$PATH"

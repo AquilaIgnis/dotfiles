@@ -10,3 +10,4 @@ nvim/autoload/plug.vim.old
 nvim/.luarc.json
 .claude
 CLAUDE*
+.codex

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -e
+
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+    echo "ERROR: gitleaks is not installed"
+    exit 1
+fi
+
+# Skip if nothing is staged
+if git diff --cached --quiet; then
+    exit 0
+fi
+
+echo "Scanning staged changes for secrets..."
+
+gitleaks git --pre-commit --staged --redact
+
+echo "Gitleaks passed."
