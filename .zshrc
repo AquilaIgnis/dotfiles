@@ -9,13 +9,13 @@ export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 export EDITOR='nvim'
 export VISUAL='nvim'
-export SSH_AUTH_SOCK=/run/user/$(id -u)/ssh-agent.socket
 
 export PATH="$HOME/scripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin/:$PATH"
 export PATH="$HOME/google-cloud-sdk/bin/:$PATH"
+export PATH="/home/mahalo/.stripe/bin:$PATH"
 
 
 export PYTHONUNBUFFERED=1
@@ -66,6 +66,7 @@ if [[ -t 0 ]]; then
   stty -ixon
 fi
 
+# open file with nvim
 fzf-nvim-widget() {
   local file
 
@@ -89,10 +90,19 @@ fzf-nvim-widget() {
 zle -N fzf-nvim-widget
 bindkey '^S' fzf-nvim-widget
 
+
+# search git by message
+fgl() {
+  fzf --disabled \
+    --bind 'start:reload:git log --all --oneline 2>&1 | sed "/^gpg:/d"' \
+    --bind 'change:reload:git log --all --oneline -i -F --grep {q} 2>&1 | sed "/^gpg:/d"' \
+    --preview 'git show --color=always {1} 2>&1 | sed "/^gpg:/d"' \
+    --preview-window 'right:60%'
+}
+
+
+
 eval "$(uv generate-shell-completion zsh)"
-
-export PATH="/home/mahalo/.stripe/bin:$PATH"
-
 
 # Added by Antigravity CLI installer
 export PATH="/home/mahalo/.local/bin:$PATH"
