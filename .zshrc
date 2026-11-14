@@ -44,6 +44,7 @@ alias git-push='git remote | xargs -n1 git push'
 alias gc='git clone --depth=1'
 alias apksigner='$HOME/Android/Sdk/build-tools/37.0.0/apksigner'
 alias fd='fd --no-ignore'
+alias gemini='agy'
 
 ### Plugins ###
 plugins=(zsh-autosuggestions python virtualenv fzf)

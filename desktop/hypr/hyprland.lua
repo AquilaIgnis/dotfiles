@@ -25,13 +25,6 @@ hl.monitor({
 ---- LOOK AND FEEL ----
 -----------------------
 
--- XWayland scaling
-hl.config({
-	xwayland = {
-		force_zero_scaling = true,
-	},
-})
-
 -- Input
 hl.config({
 	input = {
@@ -53,6 +46,16 @@ hl.config({
 
 -- General
 hl.config({
+	-- XWayland scaling
+	xwayland = {
+		force_zero_scaling = true,
+	},
+
+	--mvp thing
+	render = {
+		cm_auto_hdr = 0,
+	},
+
 	general = {
 		gaps_in = 5,
 		gaps_out = 20,
